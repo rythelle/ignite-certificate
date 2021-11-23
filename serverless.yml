@@ -4,6 +4,7 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-dynamodb-local
+  - serverless-deployment-bucket
 
 custom:
   webpack:
@@ -22,6 +23,8 @@ provider:
   name: aws
   region: sa-east-1
   runtime: nodejs14.x
+  deploymentBucket:
+    name: ignite-certificate-ryth
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -31,9 +34,6 @@ provider:
       Action:
         - s3:*
       Resource: "*"
-
-package:
-  individually: true
 
 functions:
   generateCertificate:
